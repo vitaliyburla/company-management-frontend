@@ -1,25 +1,53 @@
+import { ConfigProvider } from 'antd';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Auth, Calendar, Company, Notifications, Groups, Tasks } from './pages';
+import { AuthProvider } from './contexts/AuthContext';
+import { ROUTE } from 'src/constants/routes';
+
+const router = createBrowserRouter([
+  {
+    path: ROUTE.Company.Index,
+    element: <Company />
+  },
+  {
+    path: ROUTE.Notifications.Index,
+    element: <Notifications />
+  },
+  {
+    path: ROUTE.Groups.Index,
+    element: <Groups />
+  },
+  {
+    path: ROUTE.Groups.Tasks(),
+    element: <Tasks />
+  },
+  {
+    path: ROUTE.Calendar.Index,
+    element: <Calendar />
+  },
+  {
+    path: ROUTE.Auth.Index,
+    element: <Auth />
+  },
+  {
+    path: ROUTE.Index,
+    element: <Navigate to={ROUTE.Company.Index} />
+  }
+]);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#a3a098'
+        }
+      }}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </ConfigProvider>
   );
 }
 
