@@ -4,3 +4,4 @@ export * from './Calendar';
 export * from './Groups';
 export * from './Notifications';
 export * from './Tasks';
+export * from './Task';

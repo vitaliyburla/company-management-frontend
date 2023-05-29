@@ -11,7 +11,8 @@ export const ROUTE = {
   },
   Groups: {
     Index: '/groups',
-    Tasks: (groupId: string = ':groupId') => `/groups/${groupId}/tasks`
+    Tasks: (groupId: string = ':groupId') => `/groups/${groupId}/tasks`,
+    Task: (groupId: string = ':groupId', taskId: string = ':taskId') => `/groups/${groupId}/tasks/${taskId}`
   },
   Notifications: {
     Index: '/notifications'

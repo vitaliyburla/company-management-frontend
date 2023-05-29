@@ -8,6 +8,8 @@ import { taskStatus } from 'src/constants/task';
 import { THEME } from 'src/theme';
 import { styled } from 'styled-components';
 import { Task } from 'src/types/Task';
+import { useNavigate } from 'react-router-dom';
+import { ROUTE } from 'src/constants/routes';
 
 const Wrapper = styled.div`
   display: flex;
@@ -45,6 +47,8 @@ interface Props {
 }
 
 export const List = ({ tasks, loading }: Props) => {
+  const navigate = useNavigate();
+
   if (loading) return <Spinner />;
 
   return (
@@ -55,7 +59,7 @@ export const List = ({ tasks, loading }: Props) => {
         const statusColor = taskStatus[task.status].color;
 
         return (
-          <Card key={task._id} $accentColor={statusColor}>
+          <Card key={task._id} $accentColor={statusColor} onClick={() => navigate(ROUTE.Groups.Task(task.group, task._id))}>
             <div>
               <Paragraph.XXL $heavy style={{ marginBottom: 20, color: statusColor }}>
                 {task.title}

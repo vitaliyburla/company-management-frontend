@@ -1,7 +1,7 @@
 import { ConfigProvider } from 'antd';
 import React from 'react';
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { Auth, Calendar, Company, Notifications, Groups, Tasks } from './pages';
+import { Auth, Calendar, Company, Notifications, Groups, Tasks, Task } from './pages';
 import { AuthProvider } from './contexts/AuthContext';
 import { ROUTE } from 'src/constants/routes';
 
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: ROUTE.Groups.Tasks(),
     element: <Tasks />
+  },
+  {
+    path: ROUTE.Groups.Task(),
+    element: <Task />
   },
   {
     path: ROUTE.Calendar.Index,

@@ -94,7 +94,7 @@ export const Employees = () => {
               )}
             </Wrapper>
           ))}
-          <AddEmployee onAdd={() => setTriggerFetch((prev) => !prev)} />
+          {(profile?.role === 'director' || profile?.role === 'manager') && <AddEmployee onAdd={() => setTriggerFetch((prev) => !prev)} />}
         </>
       )}
     </Container>
