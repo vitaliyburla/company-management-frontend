@@ -11,6 +11,7 @@ import { UserOutlined } from '@ant-design/icons';
 
 const StyledLayout = styled(Layout)`
   height: 100vh;
+  min-width: 800px;
 `;
 
 const StyledContent = styled(Layout.Content)`
